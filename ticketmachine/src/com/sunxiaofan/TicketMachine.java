@@ -27,12 +27,8 @@ public class TicketMachine {
         return total;
     }
 
-    public void receiveMoney()
+    public void receiveMoney(int insert)
     {
-        System.out.println("Please put money:");
-        Scanner input = new Scanner(System.in);
-        int insert = input.nextInt();
-
         if(insert > 0){
             balance += insert;
             System.out.println("Your balance:" + balance);
@@ -88,13 +84,23 @@ public class TicketMachine {
         balance = 0;
         System.out.println("Refund : "+ refund);
     }
+    
+    public void reSet()
+    {
+        System.out.println("Total turnover is "+ total);
+        
+        total = 0;
+    }
 
     public static void main(String[] args) {
         TicketMachine tk = new TicketMachine();
 
-        tk.receiveMoney();
+        System.out.println("Please put money:");
+        Scanner input = new Scanner(System.in);
+        int insert = input.nextInt();
+        
+        tk.receiveMoney(insert);
         tk.printTicket();
-
         tk.refundMoney();
     }
 }
